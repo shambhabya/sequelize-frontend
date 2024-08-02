@@ -48,9 +48,9 @@ const TicketForm = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white shadow-md rounded-lg p-6 w-1/3"
+      className="bg-white shadow-md rounded-lg p-6 w-full md:w-1/3 h-full"
     >
-      <h2 className="text-2xl font-bold mb-4 flex justify-between items-center">
+      <h2 className="text-2xl font-bold mb-2 flex justify-between items-center">
         {initialData ? (
           <>
             Edit Ticket

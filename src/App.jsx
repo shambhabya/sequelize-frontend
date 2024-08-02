@@ -4,6 +4,7 @@ import TicketList from "./components/TicketList";
 import TicketForm from "./components/TicketForm";
 import FilterOptions from "./components/FilterOptions";
 import Loader from "./components/Loader";
+
 const API_BASE_URL = import.meta.env.VITE_URL;
 
 const App = () => {
@@ -57,7 +58,6 @@ const App = () => {
       }
 
       const response = await axios.get(url);
-      console.log(response.data);
       setTickets(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -84,7 +84,6 @@ const App = () => {
         `${API_BASE_URL}/tickets/update/${selectedTicket.ticketId}`,
         ticketData
       );
-      console.log("update successful");
       fetchTickets();
       setSelectedTicket(null);
     } catch (error) {
@@ -107,14 +106,15 @@ const App = () => {
   const handleFilterChange = (value) => {
     setFilter(value);
   };
+
   return (
-    <div className="bg-gray-900 ">
-      <h1 className="p-5 text-3xl font-bold bg-slate-50 shadow-sm">
+    <div className="bg-gray-900 min-h-screen">
+      <h1 className="p-5 text-3xl font-bold bg-gray-200 shadow-sm">
         Ticket Management System
       </h1>
-      <div className="p-6 ">
-        <div className="flex flex-col-reverse md:flex-row gap-4 ">
-          <div className="w-2/3 ">
+      <div className="p-6">
+        <div className="flex flex-col-reverse md:flex-row gap-4">
+          <div className="md:w-2/3">
             <FilterOptions
               onFilterChange={handleFilterChange}
               customerIds={customerIds}
@@ -136,6 +136,7 @@ const App = () => {
             agentIds={agentIds}
             customerIds={customerIds}
             setSelectedTicket={setSelectedTicket}
+            className="md:w-1/3"
           />
         </div>
       </div>
